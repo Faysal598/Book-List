@@ -6,27 +6,23 @@ const bookList = document.querySelector('#book-list');
 
 button.addEventListener('click', (e) => {
     e.preventDefault();
-    if(title.value == '' && author.value == '' && year.value == '')
-    {
+    
+    if (title.value == '' && author.value == '' && year.value == '') {
         alert('Bhai Kisu akta den');
     }
-    else{
+    else {
         const newRow = document.createElement('tr');
-        
-        const newTitle = document.createElement('th');
-        newTitle.innerHTML = title.value;
-        newRow.appendChild(newTitle);
-        title.value = '';
 
-        const newAuthor = document.createElement('th');
-        newAuthor.innerHTML = author.value;
-        newRow.appendChild(newAuthor);
-        author.value = '';
+        const addData = (title) => {
+            const tableHead = document.createElement('th');
+            tableHead.innerHTML = title.value;
+            newRow.appendChild(tableHead);
+            title.value = '';
+        }
 
-        const newYear = document.createElement('th');
-        newYear.innerHTML = year.value;
-        newRow.appendChild(newYear);
-        year.value = '';
+        addData(title);
+        addData(author);
+        addData(year);
 
         bookList.appendChild(newRow);
     }
